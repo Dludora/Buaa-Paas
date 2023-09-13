@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper-service
+  labels:
+    svc: zookeeper-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 97
+      nodePort: 32183
+      protocol: TCP
+  selector:
+    run: zookeeper

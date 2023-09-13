@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maven
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      run: maven
+  template:
+    metadata:
+      labels:
+        run: maven
+    spec:
+      containers:
+        - name: maven
+          image: library/maven

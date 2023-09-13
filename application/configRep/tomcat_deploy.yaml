@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      run: tomcat
+  template:
+    metadata:
+      labels:
+        run: tomcat
+    spec:
+      containers:
+        - name: nginx
+          image: library/tomcat

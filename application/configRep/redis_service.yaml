@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  labels:
+    svc: redis-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 97
+      nodePort: 32183
+      protocol: TCP
+  selector:
+    run: redis

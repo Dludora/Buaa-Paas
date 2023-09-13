@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      run: rabbitmq
+  template:
+    metadata:
+      labels:
+        run: rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: library/rabbitmq

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "Container",
     "Image",
+    "application"
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      run: python
+  template:
+    metadata:
+      labels:
+        run: python
+    spec:
+      containers:
+        - name: python
+          image: library/python
