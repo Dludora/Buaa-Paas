@@ -9,5 +9,6 @@ from .views import *
 from django.urls import path
 
 urlpatterns = [
-    path('list', list_containers)
+    path('list', list_containers),
+    path('get', get_container)
 ]
